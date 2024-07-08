@@ -1,7 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
 import { viteBundler } from '@vuepress/bundler-vite'
-import { webpackBundler } from '@vuepress/bundler-webpack'
+// import { webpackBundler } from '@vuepress/bundler-webpack'
 
 export default defineUserConfig({
   title: "凹凸的个人网站",
@@ -9,15 +9,15 @@ export default defineUserConfig({
   bundler: viteBundler(),
   // bundler: webpackBundler(),
   theme: recoTheme({
-    style: "@vuepress-reco/style-default",
+    // style: "@vuepress-reco/style-default",
     logo: "/logo.png",
     author: "凹凸",
     authorAvatar: "/head.png",
     docsRepo: "https://github.com/au-to",
-    docsBranch: "main",
-    docsDir: "example",
     lastUpdatedText: "",
-    // series 为原 sidebar
+    // docsBranch: "main", //文档所在的git分支
+    // docsDir: "example", //文档在仓库中的目录
+    // 定义侧边栏结构
     series: {
       "/docs/theme-reco/": [
         {
@@ -30,6 +30,7 @@ export default defineUserConfig({
         },
       ],
     },
+    // 导航栏
     navbar: [
       { text: "首页", link: "/" },
       { text: "分类", link: "/categories/reco/1/" },
@@ -42,6 +43,7 @@ export default defineUserConfig({
         ],
       },
     ],
+    // 公告
     // bulletin: {
     //   body: [
     //     {
@@ -96,17 +98,17 @@ export default defineUserConfig({
     //     },
     //   ],
     // },
+    // 评论
     // commentConfig: {
     //   type: 'valine',
-    //   // options 与 1.x 的 valineConfig 配置一致
     //   options: {
-    //     // appId: 'xxx',
-    //     // appKey: 'xxx',
-    //     // placeholder: '填写邮箱可以收到回复提醒哦！',
-    //     // verify: true, // 验证码服务
-    //     // notify: true,
-    //     // recordIP: true,
-    //     // hideComments: true // 隐藏评论
+    //     appId: 'xxx',
+    //     appKey: 'xxx',
+    //     placeholder: '填写邮箱可以收到回复提醒哦！',
+    //     verify: true, // 验证码服务
+    //     notify: true,
+    //     recordIP: true,
+    //     hideComments: true // 隐藏评论
     //   },
     // },
   }),
