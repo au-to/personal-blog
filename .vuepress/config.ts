@@ -17,6 +17,8 @@ export default defineUserConfig({
     lastUpdatedText: "",
     // docsBranch: "main", //文档所在的git分支
     // docsDir: "example", //文档在仓库中的目录
+    // 自动设置分类
+    // autoSetBlogCategories: true,
     // 定义侧边栏结构
     series: {
       "/docs/theme-reco/": [
@@ -28,7 +30,7 @@ export default defineUserConfig({
           text: "module two",
           children: ["api", "plugin"],
         },
-      ],
+      ]
     },
     // 导航栏
     navbar: [
@@ -41,7 +43,7 @@ export default defineUserConfig({
           { text: "vuepress-reco", link: "/docs/theme-reco/theme" },
           { text: "vuepress-theme-reco", link: "/blogs/other/guide" },
         ],
-      },
+      }
     ],
     // 公告
     // bulletin: {
