@@ -15,10 +15,12 @@ export default defineUserConfig({
     authorAvatar: "/head.png",
     docsRepo: "https://github.com/au-to",
     lastUpdatedText: "",
+    docsDir: "/docs", //文档在仓库中的目录
     // docsBranch: "main", //文档所在的git分支
-    // docsDir: "example", //文档在仓库中的目录
     // 自动设置分类
-    // autoSetBlogCategories: true,
+    autoSetBlogCategories: true,
+    // 自动设置系列
+    autoSetSeries: true,
     // 定义侧边栏结构
     series: {
       "/docs/theme-reco/": [
@@ -35,13 +37,13 @@ export default defineUserConfig({
     // 导航栏
     navbar: [
       { text: "首页", link: "/" },
-      { text: "分类", link: "/categories/reco/1/" },
-      { text: "标签", link: "/tags/tag1/1/" },
+      { text: "分类", link: "/categories/reco/1.html" },
+      { text: "标签", link: "/tags/tag1/1.html" },
+      { text: "归档", link: "/timeline.html" },
       {
         text: "文档",
         children: [
-          { text: "vuepress-reco", link: "/docs/theme-reco/theme" },
-          { text: "vuepress-theme-reco", link: "/blogs/other/guide" },
+          { text: "vuepress-reco", link: "/docs/theme-reco/theme" }
         ],
       }
     ],
