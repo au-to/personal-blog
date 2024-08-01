@@ -11,7 +11,7 @@ bannerBrand:
   description: 技术分享&个人生活随感
   tagline: 流水不争先，争的是滔滔不绝。
   buttons:
-    - { text: 关于我, link: '/docs/introduce/myself.md' }
+    - { text: 关于我, link: '/personal-blog/docs/introduce/myself.md' }
 blog:
 isShowTitleInHome: true
 ---
