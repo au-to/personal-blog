@@ -20,6 +20,7 @@ export default defineUserConfig({
       type: 'giscus',
       options: {
         lang: 'zh-CN',
+        theme: 'preferred_color_scheme',
         loading: 'lazy',
         repo: 'au-to/personal-blog',
         repoId: 'R_kgDOMNxQsA',
