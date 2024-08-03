@@ -17,10 +17,16 @@ export default defineUserConfig({
     autoSetSeries: true,
     catalogTitle: '目录',
     commentConfig: {
-      type: 'waline',
+      type: 'giscus',
       options: {
-        serverURL: 'https://blog-comments-server-t4qa-al8uz3i65-au-tos-projects.vercel.app/',
-        hideComments: false, // 全局隐藏评论，默认 false
+        lang: 'zh-CN',
+        loading: 'lazy',
+        repo: 'au-to/personal-blog',
+        repoId: 'R_kgDOMNxQsA',
+        category: 'Announcements',
+        categoryId: 'DIC_kwDOMNxQsM4ChYOx',
+        mapping: 'title',
+        hideComments: false,
       },
     },
     navbar: [
