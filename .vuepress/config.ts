@@ -32,8 +32,8 @@ export default defineUserConfig({
     },
     navbar: [
       { text: "首页", link: "/" },
-      { text: "分类", link: "/categories/javaScript/1.html" },
-      { text: "标签", link: "/tags/javaScript/1.html" },
+      { text: "分类", link: "/categories/gongjulian/1.html" },
+      { text: "标签", link: "/tags/gongjulian/1.html" },
       { text: "归档", link: "/timeline.html" },
       {
         text: "文档",
