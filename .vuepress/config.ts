@@ -30,6 +30,15 @@ export default defineUserConfig({
         hideComments: false,
       },
     },
+    // commentConfig: {
+    //   type: 'valine',
+    //   options: {
+    //     appId: '2QjWCWwnbA22eM1Cp9XkYk6c-MdYXbMMI',
+    //     appKey: 'YG6MOnWoGo3yYBSwrzgdbFud',
+    //     hideComments: false,
+    //     visitor: true,
+    //   },
+    // },
     navbar: [
       { text: "首页", link: "/" },
       { text: "分类", link: "/categories/gongjulian/1.html" },
