@@ -7,7 +7,7 @@ modules:
   - Footer
 bannerBrand:
   bgImage: '/bg.svg'
-  title: 凹凸的个人网站
+  title: Ryan的个人网站
   description: 技术分享&个人生活随感
   tagline: 流水不争先，争的是滔滔不绝。
   buttons:
