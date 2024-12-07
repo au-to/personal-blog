@@ -1,6 +1,6 @@
 ---
 title: three.js入门指南
-date: 2024/10/06
+date: 2024/07/06
 tags:
  - three.js
 ---
