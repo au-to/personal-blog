@@ -1,6 +1,6 @@
 ---
 title: 关于我
-date: 2024/09/07
+date: 2024/01/07
 ---
 
 Hi, i'm Ryan, an ordinary person is moving bricks, these are my tags:
