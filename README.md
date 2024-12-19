@@ -12,6 +12,7 @@ bannerBrand:
   tagline: 流水不争先，争的是滔滔不绝。
   buttons:
     - { text: 关于我, link: '/personal-blog/docs/introduce/myself.md' }
+    - { text: Resume, link: 'https://hacknical.com/au-to/resume?locale=zh' }
 blog:
 isShowTitleInHome: true
 ---
