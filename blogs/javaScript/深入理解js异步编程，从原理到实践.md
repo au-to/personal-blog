@@ -14,8 +14,15 @@ JavaScript 是一门单线程语言，这意味着它一次只能执行一个任
 
 JavaScript 的运行机制由以下几个部分组成：
 1. 调用栈（Call Stack）：执行代码的栈，函数会被依次压入栈中执行，执行完毕后出栈。
-2. 消息队列（Message Queue）：当某个异步操作（例如定时器或 HTTP 请求）完成时，对应的回调函数会进入消息队列。
-3. 事件循环（Event Loop）：事件循环会不断检查调用栈是否为空。如果为空，它会从消息队列中取出第一个任务并执行。
+2. 任务队列（Task Queue）：当某个异步操作（例如定时器或 HTTP 请求）完成时，对应的回调函数会进入任务队列，任务队列分为宏任务队列和微任务队列。
+3. 事件循环（Event Loop）：事件循环会不断检查调用栈是否为空。如果为空，它会从任务队列中取出第一个任务并执行。
+
+事件循环的执行过程：
+1. 执行同步代码（栈上的任务，调用栈上）。
+2. 执行所有微任务（比如.then()或catch()）。
+3. 执行一个宏任务。
+4. 然后回到步骤2，继续执行所有微任务（如果有的话）。
+5. 重复上面这几步，直到所有任务都执行完。
 
 一个简单的示例：
 ```javascript
@@ -29,13 +36,95 @@ console.log('结束');
 ```
 执行顺序为：
 1. console.log('开始') 会立即执行并输出 开始。
-2. setTimeout 是异步操作，它不会立即执行回调，而是将回调任务放入消息队列，并继续执行同步代码。
+2. setTimeout 是异步操作，它不会立即执行回调，而是将回调任务放入任务队列，并继续执行同步代码。
 3. console.log('结束') 立即执行，输出 结束。
-4. 1 秒后，setTimeout 的回调函数被放入消息队列，等待调用栈为空时被执行，最终输出 异步操作。
+4. 1 秒后，setTimeout 的回调函数被放入任务队列，等待调用栈为空时被执行，最终输出 异步操作。
 
 通过事件循环，JavaScript 实现了异步任务的调度，不会阻塞主线程的执行。
 
-### 二、异步编程的实现方式
+### 二、宏任务与微任务
+任务队列分为宏任务队列和微任务队列。
+* 宏任务（Macro Task）：通常指 setTimeout、setInterval 等任务。
+* 微任务（Micro Task）：Promise.then() 的回调、process.nextTick()（Node.js中）。
+
+在每次事件循环中，JavaScript 会优先执行所有微任务，再执行宏任务。我们通过一个例子理解：
+
+```javascript
+console.log("Start");
+
+setTimeout(function() {
+  console.log("Macrotask 1");
+  Promise.resolve().then(function() {
+    console.log("Microtask 1 inside Macrotask 1");
+  });
+}, 0);
+
+Promise.resolve().then(function() {
+  console.log("Microtask 2");
+}).then(function() {
+  console.log("Microtask 3");
+});
+
+queueMicrotask(function() {
+  console.log("Microtask 4 from queueMicrotask");
+});
+
+setTimeout(function() {
+  console.log("Macrotask 2");
+  setTimeout(function() {
+    console.log("Macrotask 3");
+  }, 0);
+}, 0);
+
+console.log("End");
+```
+
+输出结果为：
+
+```
+Start
+End
+Microtask 2
+Microtask 3
+Microtask 4 from queueMicrotask
+Macrotask 1
+Microtask 1 inside Macrotask 1
+Macrotask 2
+Macrotask 3
+```
+
+解释
+1. 同步代码：
+* console.log("Start"); 和 console.log("End"); 先被执行，输出“Start”和“End”。
+
+2. 微任务：
+* 在 Promise.resolve().then() 中注册的第一个微任务会被放入微任务队列，执行后输出“Microtask 2”。
+* 紧接着，then() 后的第二个微任务也会加入微任务队列，执行后输出“Microtask 3”。
+* queueMicrotask() 被调用时，另一个微任务被加入队列，输出“Microtask 4 from queueMicrotask”。
+
+到这一步，所有的微任务都已经执行完了，它们的执行顺序依次是：
+
+* Microtask 2
+* Microtask 3
+* Microtask 4 from queueMicrotask
+
+3. 宏任务：
+* 第一个 setTimeout 的宏任务（“Macrotask 1”）接着被执行。
+* 它的内部有一个新的 Promise.resolve().then()，所以又产生了一个微任务（“Microtask 1 inside Macrotask 1”），这个微任务会在当前宏任务执行完之后被立即执行。
+
+4. 后续宏任务：
+
+* 第二个 setTimeout 作为宏任务被执行，输出“Macrotask 2”。
+* 在它的内部，第三个 setTimeout 被触发，这会产生一个新的宏任务，输出“Macrotask 3”。
+
+所以，最终输出顺序是：
+
+* Macrotask 1
+* Microtask 1 inside Macrotask 1
+* Macrotask 2
+* Macrotask 3
+
+### 三、异步编程的实现方式
 1. 回调函数 (Callback)<br>
 回调函数是最早用于处理异步任务的方式。在异步任务完成后，通过调用事先传入的函数来处理结果。
 ```javascript
@@ -119,41 +208,6 @@ getData();
 ```
 * async 关键字用于声明异步函数，函数内部可以使用 await 关键字等待 Promise 完成。
 * await 会暂停函数的执行，直到 Promise 返回结果，这使得代码看起来像同步逻辑。
-
-### 三、深入理解 Event Loop 及微任务
-除了主消息队列外，JavaScript 还有一个 微任务队列（Microtask Queue），它主要用于 Promise 的回调和一些特殊的 API（如 MutationObserver）。
-* 宏任务（Macro Task）：通常指 setTimeout、setInterval 等任务。
-* 微任务（Micro Task）：Promise.then() 的回调、process.nextTick()（Node.js 中）。
-
-在每次事件循环中，JavaScript 会优先执行所有微任务，再执行宏任务。我们通过一个例子理解：
-
-```javascript
-console.log('1');
-
-setTimeout(() => {
-  console.log('2');
-}, 0);
-
-Promise.resolve().then(() => {
-  console.log('3');
-});
-
-console.log('4');
-```
-
-输出结果为：
-
-```
-1
-4
-3
-2
-```
-
-解释
-* console.log('1') 和 console.log('4') 立即执行。
-* setTimeout 是宏任务，放入消息队列，等待下一轮事件循环。
-* Promise.then() 是微任务，优先于宏任务执行。
 
 ### 四、应用场景与性能优化
 并行执行异步任务：Promise.all
