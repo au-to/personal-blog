@@ -103,10 +103,11 @@ Macrotask 3
 * queueMicrotask() 被调用时，另一个微任务被加入队列，输出“Microtask 4 from queueMicrotask”。
 
 到这一步，所有的微任务都已经执行完了，它们的执行顺序依次是：
-
-* Microtask 2
-* Microtask 3
-* Microtask 4 from queueMicrotask
+```
+Microtask 2
+Microtask 3
+Microtask 4 from queueMicrotask
+```
 
 3. 宏任务：
 * 第一个 setTimeout 的宏任务（“Macrotask 1”）接着被执行。
@@ -118,11 +119,12 @@ Macrotask 3
 * 在它的内部，第三个 setTimeout 被触发，这会产生一个新的宏任务，输出“Macrotask 3”。
 
 所以，最终输出顺序是：
-
-* Macrotask 1
-* Microtask 1 inside Macrotask 1
-* Macrotask 2
-* Macrotask 3
+```
+Macrotask 1
+Microtask 1 inside Macrotask 1
+Macrotask 2
+Macrotask 3
+```
 
 ### 三、异步编程的实现方式
 1. 回调函数 (Callback)<br>
