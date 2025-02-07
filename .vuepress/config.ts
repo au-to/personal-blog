@@ -10,7 +10,7 @@ export default defineUserConfig({
   theme: recoTheme({
     logo: "/logo.png",
     author: "Ryan",
-    authorAvatar: "/head.png",
+    authorAvatar: "/logo.png",
     lastUpdatedText: "最后更新时间",
     docsDir: "/docs",
     autoSetBlogCategories: true,
