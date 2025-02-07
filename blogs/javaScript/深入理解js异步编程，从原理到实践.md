@@ -43,7 +43,7 @@ console.log('结束');
 通过事件循环，JavaScript 实现了异步任务的调度，不会阻塞主线程的执行。
 
 ### 二、宏任务与微任务
-任务队列分为宏任务队列和微任务队列。
+异步任务又分为宏任务和微任务。
 * 宏任务（Macro Task）：通常指 setTimeout、setInterval 等任务。
 * 微任务（Micro Task）：Promise.then() 的回调、process.nextTick()（Node.js中）。
 
