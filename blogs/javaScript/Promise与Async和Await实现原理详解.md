@@ -1,4 +1,9 @@
-# JavaScript Promise与Async/Await实现原理详解
+---
+title: JavaScript Promise与Async/Await实现原理详解
+date: 2025/02/16
+tags:
+ - JavaScript
+---
 
 ## 1. 引言
 在现代JavaScript中，`Promise`和`Async/Await`是处理异步操作的核心机制。本文深入剖析它们的底层实现原理。
