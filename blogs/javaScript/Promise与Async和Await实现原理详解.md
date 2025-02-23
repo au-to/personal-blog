@@ -6,7 +6,7 @@ tags:
 ---
 
 ## 1. 引言
-在现代JavaScript中，`Promise`和`Async/Await`是处理异步操作的核心机制。本文深入剖析它们的底层实现原理。
+在现代JavaScript中，`Promise`和`Async/Await`是处理异步操作的核心机制。本文将深入剖析它们的底层实现原理。
 
 ## 2. Promise实现原理
 
@@ -27,7 +27,13 @@ class MyPromise {
       }
     };
 
-    const reject = (reason) => { /* 类似resolve */ };
+    const reject = (reason) => { 
+      if(this.status === 'pending') {
+        this.status = 'rejected';
+        this.value = reason;
+        this.onRejectedCallbacks.forEach(fn => fn());
+      }
+    };
     
     try {
       executor(resolve, reject);
