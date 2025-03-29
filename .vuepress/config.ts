@@ -6,7 +6,7 @@ export default defineUserConfig({
   title: "Ryan的个人网站",
   description: "欢迎访问Ryan的个人网站，这里分享最新的软件开发技巧、编程项目和技术文章，帮助您提升开发技能。关注我们，获取实用的实战项目、开发教程及更多技术资源",
   bundler: viteBundler(),
-  base: '/personal-blog/',
+  base: '/',
   theme: recoTheme({
     logo: "/logo.png",
     author: "Ryan",
