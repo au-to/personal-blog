@@ -1,6 +1,6 @@
 ---
 title: Webpack 和 Vite 的原理解析，以及 Vite 为什么比 Webpack 快
-date: 2025/05/19
+date: 2025/05/22
 tags:
  - 工程化
 ---

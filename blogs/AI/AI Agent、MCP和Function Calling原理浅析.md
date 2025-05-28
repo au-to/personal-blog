@@ -1,6 +1,6 @@
 ---
 title: AI Agent、MCP 和 Function Calling 原理浅析
-date: 2025/04/15
+date: 2025/04/21
 tags:
  - AI
 ---
