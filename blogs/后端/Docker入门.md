@@ -15,26 +15,22 @@ tags:
 
 你可以把容器想象成一个轻量级的虚拟机，但它比虚拟机更高效、启动更快。
 
----
-
 ## Docker 的核心概念
 
-在你开始动手之前，了解几个 Docker 的核心概念非常重要：
+在开始动手之前，了解几个 Docker 的核心概念非常重要：
 
 * **镜像 (Image)**：镜像是一个只读的模板，包含了创建 Docker 容器所需的所有指令、应用程序、库、配置文件等。可以把它看作是容器的“蓝图”或“模具”。比如，你可以有一个 Ubuntu 镜像，或者一个包含了 Node.js 运行环境的镜像。
 * **容器 (Container)**：容器是镜像的运行实例。你可以从一个镜像创建多个容器，每个容器都是相互隔离的、独立的运行环境。容器是轻量级、可移植且可执行的。
 * **Dockerfile**：Dockerfile 是一个文本文件，包含了一系列指令，用来自动化构建 Docker 镜像。你可以编写 Dockerfile 来定义你的应用程序如何被打包成一个镜像。
 * **Docker Hub**：Docker Hub 是一个官方的 Docker 镜像仓库，里面包含了大量的公共镜像，你可以直接下载使用。同时，你也可以将自己构建的镜像上传到 Docker Hub，方便分享和管理。
 
----
-
 ## 快速上手 Docker：三步走
 
-现在，让我们来实际操作一下，快速上手 Docker！
+接下来，让我们来实际操作一下，快速上手 Docker！
 
 ### 第一步：安装 Docker
 
-首先，你需要在你的电脑上安装 Docker。Docker 官方提供了详细的安装指南，根据你的操作系统选择对应的安装方式：
+首先，需要在你的电脑上安装 Docker。Docker 官方提供了详细的安装指南，根据你的操作系统选择对应的安装方式：
 
 * **macOS**: 访问 [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)
 * **Windows**: 访问 [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)
@@ -47,11 +43,11 @@ docker --version
 docker run hello-world
 ```
 
-如果看到 Docker 的版本信息，并且 `docker run hello-world` 命令成功运行并输出了“Hello from Docker!”的信息，恭喜你，Docker 已经成功安装并运行了！
+如果看到 Docker 的版本信息，并且 `docker run hello-world` 命令成功运行并输出了“Hello from Docker!”的信息，说明 Docker 已经成功安装并运行了。
 
 ### 第二步：运行你的第一个 Docker 容器
 
-现在我们来运行一个简单的 Nginx Web 服务器，让你感受一下 Docker 的魔力。
+现在我们来运行一个简单的 Nginx Web 服务器，感受一下 Docker 的魔力。
 
 在命令行中输入：
 
@@ -59,7 +55,7 @@ docker run hello-world
 docker run -d -p 80:80 --name my-nginx nginx
 ```
 
-让我来解释一下这个命令：
+解释一下这个命令：
 
 * `docker run`: 这是运行 Docker 容器的命令。
 * `-d`: 表示“detached”模式，让容器在后台运行，不会占用你的命令行界面。
@@ -69,7 +65,7 @@ docker run -d -p 80:80 --name my-nginx nginx
 
 运行完这条命令后，你应该会看到一串很长的字符串，那是容器的 ID。
 
-现在，打开你的浏览器，访问 `http://localhost`。你应该能看到 Nginx 的欢迎页面！
+现在，打开你的浏览器，访问 `http://localhost`。你应该能看到 Nginx 的欢迎页面。
 
 要停止并删除这个容器，你可以执行：
 
@@ -166,11 +162,9 @@ docker rm my-nginx
     docker rm my-running-app
     ```
 
----
-
 ## 常用 Docker 命令
 
-掌握这些常用命令，将大大提高你使用 Docker 的效率：
+掌握这些常用命令，可以提高你使用 Docker 的效率：
 
 * `docker images`: 列出本地所有的 Docker 镜像。
 * `docker ps`: 列出所有正在运行的容器。
@@ -180,8 +174,6 @@ docker rm my-nginx
 * `docker rmi <镜像ID或名称>`: 删除一个本地镜像。
 * `docker logs <容器ID或名称>`: 查看容器的日志输出。
 * `docker exec -it <容器ID或名称> bash`: 进入正在运行的容器内部进行交互式操作。
-
----
 
 ## 接下来你可以学习什么？
 
