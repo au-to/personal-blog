@@ -12,7 +12,7 @@ bannerBrand:
   tagline: 探索、创造、分享
   buttons:
     - { text: 关于我, link: '/docs/introduce/myself.md' }
-    - { text: Resume, link: 'https://hacknical.com/au-to/resume?locale=zh' }
+    - { text: Resume, link: 'https://au-to.github.io/my-resume' }
 blog:
 isShowTitleInHome: true
 ---
