@@ -37,11 +37,6 @@ jobs:
       - name: Build VuePress site
         run: pnpm build
 
-      # 添加 CNAME 文件
-      - name: Preserve CNAME file
-        run: |
-          echo "www.ryan-blog.cn" > .vuepress/dist/CNAME
-
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
