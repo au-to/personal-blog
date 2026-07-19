@@ -11,7 +11,7 @@ bannerBrand:
   description: 技术分享&个人生活随感
   tagline: 探索、创造、分享
   buttons:
-    - { text: 关于我, link: '/docs/introduce/myself.md' }
+    - { text: 关于我, link: '/personal-blog/docs/introduce/myself.html' }
     - { text: Resume, link: 'https://au-to.github.io/my-resume' }
 blog:
 isShowTitleInHome: true

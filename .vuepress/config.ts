@@ -42,13 +42,13 @@ export default defineUserConfig({
     // },
     navbar: [
       { text: "首页", link: "/" },
-      { text: "分类", link: "/categories/gongjulian/1.html" },
+      { text: "分类", link: "/categories/kaifagongju/1.html" },
       { text: "标签", link: "/tags/gongjulian/1.html" },
       { text: "归档", link: "/timeline.html" },
       {
         text: "文档",
         children: [
-          { text: "关于我", link: "/docs/introduce/myself" }
+          { text: "关于我", link: "/docs/introduce/myself.html" }
         ]
       },
       { text: "github", link: "https://github.com/au-to" }
